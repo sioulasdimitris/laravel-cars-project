@@ -16,10 +16,11 @@ class Car extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['name','founded','description']; #mass assignments
+    protected $fillable = ['name', 'founded', 'description']; #mass assignments
 
-//    protected $hidden = ['updated_at']; # hide columns from printing (blacklisted attributes)
-
-    protected $visible = ['id','name','founded','description']; # choose the attributes that will be showed only (whitelisted attributes)
+    public function carmodels()
+    {
+        return $this->hasMany(CarModel::class);
+    }
 
 }

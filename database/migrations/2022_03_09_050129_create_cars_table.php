@@ -26,7 +26,10 @@ class CreateCarsTable extends Migration
             $table->unsignedInteger('car_id'); #refer to cars table ids
             $table->string('model_name');
             $table->timestamps();
-            $table->foreign('car_id')->references('id')->on('cars'); #define the foreign key column name
+            $table->foreign('car_id')
+                ->references('id')
+                ->on('cars'); #define the foreign key column name
+            ('cascade'); #if the car is deleted you don't want the car_models to be in the database anymore
         });
     }
 

@@ -23,4 +23,15 @@ class Car extends Model
         return $this->hasMany(CarModel::class);
     }
 
+    #define a has many through relationship
+    public function engines()
+    {
+        return $this->hasManyThrough(
+            Engine::class,
+            CarModel::Class,
+            'car_id', #foreign key on CarModel table
+            'model_id', #foreign key on Engine Table
+        );
+    }
+
 }
